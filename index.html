@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>resep nenek — arsip dapur keluarga</title>
+<meta name="description" content="16 resep keluarga indonesia yang bisa ditimbang ulang porsinya dan langsung jadi daftar belanja. arsip dapur nenek, semua huruf kecil.">
+<meta name="theme-color" content="#2e1512">
+<link rel="canonical" href="https://kayzenn123.github.io/agent-resepnenek/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="resep nenek — arsip dapur keluarga">
+<meta property="og:description" content="16 resep keluarga, ditimbang ulang untuk dapurmu. buka, timbang, masak.">
+<meta property="og:image" content="https://kayzenn123.github.io/agent-resepnenek/og-image.png">
+<meta property="og:url" content="https://kayzenn123.github.io/agent-resepnenek/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preload" href="fonts/titillium-web-900.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/noto-sans-hk-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#laci">lompat ke laci resep</a>
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-dot"></span><span class="cursor-ring"></span><span class="cursor-label">icip</span></div>
+
+<header class="topbar">
+  <a class="brand" href="#" data-goto="0"><span class="brand-mark" aria-hidden="true"></span>resep nenek</a>
+  <nav class="topnav" aria-label="panel">
+    <button type="button" data-goto="0">teras</button>
+    <button type="button" data-goto="1">laci</button>
+    <button type="button" data-goto="2">belanja</button>
+    <button type="button" data-goto="3">catatan</button>
+  </nav>
+  <div class="topctl">
+    <button type="button" id="motionToggle" class="ctl" aria-pressed="true" title="nyalakan/matikan gerak">gerak: nyala</button>
+    <button type="button" id="marqueeToggle" class="ctl" aria-pressed="true" title="jeda pita berjalan">pita: jalan</button>
+  </div>
+</header>
+
+<main id="main">
+<div class="hwrap" id="hwrap">
+  <div class="hpin" id="hpin">
+    <div class="htrack" id="htrack">
+
+      <section class="panel hero" data-panel="0" aria-labelledby="heroTitle">
+        <div class="panel-inner">
+          <div class="kawung" aria-hidden="true"></div>
+          <div class="fallzone" id="fallzone" aria-hidden="true"></div>
+          <p class="kicker">arsip dapur keluarga · sejak dulu</p>
+          <h1 id="heroTitle" class="giant">resep<br>nenek</h1>
+          <p class="lede">16 resep keluarga, ditimbang ulang untuk dapurmu.<br>buka, timbang, masak.</p>
+          <div class="hero-cta">
+            <button type="button" class="btn magnetic" data-goto="1">buka laci resep <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="hint" aria-hidden="true">geser ke kanan <span>→</span></p>
+          <div class="marquee band-a" aria-hidden="true"><div class="mq-track" id="mqA"></div></div>
+        </div>
+      </section>
+
+      <section class="panel laci" id="laci" data-panel="1" aria-labelledby="laciTitle">
+        <div class="panel-inner">
+          <div class="kawung dim" aria-hidden="true"></div>
+          <p class="kicker">panel 01</p>
+          <h2 id="laciTitle" class="ptitle">laci resep</h2>
+          <div class="laci-tools">
+            <div class="searchwrap">
+              <label class="sr" for="q">cari resep</label>
+              <input id="q" type="search" inputmode="search" autocomplete="off" placeholder="cari: rendang, santan, 30 menit..." aria-describedby="countLine">
+            </div>
+            <div class="chips" role="group" aria-label="saring kategori" id="chips"></div>
+          </div>
+          <p class="countline" id="countLine" aria-live="polite"></p>
+          <div class="cards" id="cards" role="list"></div>
+          <div class="empty" id="laciEmpty" hidden>
+            <p class="empty-title">waduh, laci bumbunya kosong, nak.</p>
+            <p>coba kata lain, atau longgarkan saringannya.</p>
+            <button type="button" class="btn ghost" id="resetFilter">tampilkan semua</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel belanja" data-panel="2" aria-labelledby="belanjaTitle">
+        <div class="panel-inner">
+          <div class="kawung dim" aria-hidden="true"></div>
+          <p class="kicker">panel 02</p>
+          <h2 id="belanjaTitle" class="ptitle">daftar belanja</h2>
+          <p class="lede small">centang yang sudah masuk keranjang. tersimpan di peramban ini saja.</p>
+          <ul class="shoplist" id="shoplist"></ul>
+          <div class="empty" id="shopEmpty" hidden>
+            <p class="empty-title">keranjang masih kosong, nak.</p>
+            <p>buka salah satu resep, lalu tekan "masukkan ke daftar".</p>
+            <button type="button" class="btn ghost" data-goto="1">ke laci resep</button>
+          </div>
+          <div class="shop-actions">
+            <button type="button" class="btn magnetic" id="copyShop">salin buat wa</button>
+            <button type="button" class="btn ghost" id="dlShop">unduh json</button>
+            <button type="button" class="btn danger-ghost" id="clearShop">kosongkan</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel catatan" data-panel="3" aria-labelledby="catatanTitle">
+        <div class="panel-inner">
+          <div class="kawung dim" aria-hidden="true"></div>
+          <p class="kicker">panel 03</p>
+          <h2 id="catatanTitle" class="ptitle">catatan nenek</h2>
+          <p class="lede small">empat ilmu yang tidak tertulis di buku resep mana pun.</p>
+          <div class="techs" id="techs"></div>
+          <dl class="stats">
+            <div><dt>resep</dt><dd><span class="num" data-count id="statRecipes">0</span></dd></div>
+            <div><dt>bahan tercatat</dt><dd><span class="num" data-count id="statIngredients">0</span></dd></div>
+            <div><dt>langkah</dt><dd><span class="num" data-count id="statSteps">0</span></dd></div>
+          </dl>
+          <div class="marquee band-b" aria-hidden="true"><div class="mq-track" id="mqB"></div></div>
+        </div>
+      </section>
+
+      <section class="panel penutup" data-panel="4" aria-labelledby="tutupTitle">
+        <div class="panel-inner">
+          <div class="kawung" aria-hidden="true"></div>
+          <p class="kicker">panel 04 · terakhir</p>
+          <h2 id="tutupTitle" class="giant small-giant">selamat<br>memasak,<br>nak.</h2>
+          <p class="lede">jangan lupa icip dulu sebelum dihidangkan.<br>kalau kurang garam, itu salahmu — bukan resepnya.</p>
+          <div class="hero-cta">
+            <button type="button" class="btn magnetic" data-goto="0">balik ke teras <span aria-hidden="true">←</span></button>
+          </div>
+          <footer class="foot">
+            <p>resep nenek · arsip dapur keluarga · takaran rumahan, bukan takaran lab.</p>
+            <p>dibuat dengan api kecil · 2026</p>
+          </footer>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<div class="overlay" id="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="ovTitle">
+  <div class="ov-card" id="ovCard">
+    <div class="ov-top">
+      <button type="button" class="iconbtn" id="ovClose" aria-label="tutup resep"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/></svg></button>
+      <p class="kicker" id="ovKicker">resep</p>
+    </div>
+    <h2 id="ovTitle" class="ov-title"></h2>
+    <p class="ov-meta" id="ovMeta"></p>
+    <div class="ov-portion">
+      <span id="portionLabel">porsi</span>
+      <div class="stepper" role="group" aria-labelledby="portionLabel">
+        <button type="button" class="iconbtn" id="pMinus" aria-label="kurangi porsi">−</button>
+        <output id="pOut" aria-live="polite">6</output>
+        <button type="button" class="iconbtn" id="pPlus" aria-label="tambah porsi">+</button>
+      </div>
+      <button type="button" class="btn small" id="pReset">timbang ulang</button>
+    </div>
+    <h3>bahan</h3>
+    <ul class="inglist" id="ovIng"></ul>
+    <button type="button" class="btn" id="ovToShop">masukkan ke daftar belanja</button>
+    <h3>langkah</h3>
+    <ol class="steps" id="ovSteps"></ol>
+    <blockquote class="tips"><p id="ovTips"></p><cite>— nenek</cite></blockquote>
+    <div class="ov-actions">
+      <button type="button" class="btn ghost" id="ovCopy">salin ringkasan</button>
+      <button type="button" class="btn ghost" id="ovDl">unduh json</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/Flip.min.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
